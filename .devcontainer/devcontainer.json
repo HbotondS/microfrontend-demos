@@ -1,0 +1,5 @@
+{
+    "image":"mcr.microsoft.com/devcontainers/universal:2",
+    "name": "mf-demo",
+    "postCreateCommand": "/worskspaces/microfrontends-demo/.devcontainer/startUp.sh"
+}
