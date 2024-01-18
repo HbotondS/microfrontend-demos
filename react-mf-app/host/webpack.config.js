@@ -4,7 +4,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://localhost:8080/",
+    publicPath: "https://vigilant-funicular-w9xv6wjw5qxhv4v-8080.app.github.dev/",
   },
 
   resolve: {
@@ -44,7 +44,7 @@ module.exports = (_, argv) => ({
       name: "host",
       filename: "remoteEntry.js",
       remotes: {
-        remote: "remote@http://localhost:3000/remoteEntry.js"
+        remote: "remote@https://vigilant-funicular-w9xv6wjw5qxhv4v-3000.app.github.dev/remoteEntry.js"
       },
       exposes: {},
       shared: {
