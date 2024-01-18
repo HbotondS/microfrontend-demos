@@ -1,5 +1,8 @@
 {
     "image":"mcr.microsoft.com/devcontainers/universal:2",
     "name": "mf-demo",
-    "postCreateCommand": "/worskspaces/microfrontends-demo/.devcontainer/startUp.sh"
+    "postCreateCommand": "/worskspaces/microfrontends-demo/.devcontainer/startUp.sh",
+    "features": {
+        "ghcr.io/devcontainers-contrib/features/angular-cli:2": {}
+    }
 }
