@@ -37,7 +37,7 @@ module.exports = {
         
         // For hosts (please adjust)
         remotes: {
-            "Counter": "https://vigilant-funicular-w9xv6wjw5qxhv4v-4200.app.github.dev/remoteEntry.js",
+            "Counter": "/counter/remoteEntry.js",
         },
 
         shared: share({
