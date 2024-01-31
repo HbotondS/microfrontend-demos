@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Counter } from 'Counter';
+import { CounterHostComponent } from "./counter-host/counter-host.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    template: `
+      <app-counter-host></app-counter-host>
+    `,
+    styleUrl: './app.component.css',
+    imports: [RouterOutlet, CounterHostComponent]
 })
 export class AppComponent {
   title = 'host';

@@ -10,7 +10,7 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "remote",
+    uniqueName: "counter",
     publicPath: "auto"
   },
   optimization: {
@@ -24,12 +24,16 @@ module.exports = {
   experiments: {
     outputModule: true
   },
+  devServer: {
+    port: 4200,
+    historyApiFallback: true,
+  },
   plugins: [
     new ModuleFederationPlugin({
         library: { type: "module" },
 
         // For remotes (please adjust)
-        name: "remote",
+        name: "counter",
         filename: "remoteEntry.js",
         exposes: {
             './CounterComponent': './src/app/modules/counter/counter.component.ts',
