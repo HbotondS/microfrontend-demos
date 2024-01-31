@@ -15,7 +15,7 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: false
-  },   
+  },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -24,31 +24,34 @@ module.exports = {
   experiments: {
     outputModule: true
   },
+  devServer: {
+    port: 4201,
+    historyApiFallback: true,
+  },
   plugins: [
     new ModuleFederationPlugin({
-        library: { type: "module" },
 
-        // For remotes (please adjust)
-        // name: "host",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './/src/app/app.component.ts',
-        // },        
-        
-        // For hosts (please adjust)
-        remotes: {
-            "Counter": "/counter/remoteEntry.js",
-        },
+      // For remotes (please adjust)
+      // name: "host",
+      // filename: "remoteEntry.js",
+      // exposes: {
+      //     './Component': './/src/app/app.component.ts',
+      // },        
 
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+      // For hosts (please adjust)
+      remotes: {
+        counter: "http://localhost:4200/remoteEntry.js",
+      },
 
-          ...sharedMappings.getDescriptors()
-        })
-        
+      shared: share({
+        "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+
+        ...sharedMappings.getDescriptors()
+      })
+
     }),
     sharedMappings.getPlugin()
   ],
