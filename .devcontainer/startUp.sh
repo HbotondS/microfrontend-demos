@@ -7,4 +7,5 @@ curl -fsSL https://bun.sh/install | bash
 export CODESPACE_NAME=$(gh codespace view | head -n 1 | sed 's/Name[[:space:]]*//')
 
 # Create webpack config file
-python webpack-config.py
+# fixme: coomenting out python script until it's fixed
+# python webpack-config.py
