@@ -18,7 +18,10 @@ jobs:
         with:
           node-version: '20'
       - run: npm install eslint --global
-      - run: npm ci
+      - name: Install dependencies
+        working-directory: svelte-mf-app/remote
+        run: npm install
 
       - name: Linting
-        run: eslint svelte-mf-app/remote/src
+        working-directory: svelte-mf-app/remote
+        run: eslint src
