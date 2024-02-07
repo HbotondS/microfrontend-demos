@@ -45,3 +45,43 @@ jobs:
       - name: Linting
         working-directory: svelte-mf-app/host
         run: eslint src
+
+  react-remote:
+    name: Lint React remote app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: react-mf-app/remote
+        run: npm install
+
+      - name: Linting
+        working-directory: react-mf-app/remote
+        run: eslint src
+
+  react-host:
+    name: Lint React host app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: react-mf-app/host
+        run: npm install
+
+      - name: Linting
+        working-directory: react-mf-app/host
+        run: eslint src
