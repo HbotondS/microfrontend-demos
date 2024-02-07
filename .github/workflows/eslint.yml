@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - run: npm install eslint --global
 
   svelte-remote:
     name: Lint Svelte remote app
@@ -26,4 +27,3 @@ jobs:
     steps:
       - name: Linting
         run: eslint svelte-mf-app/remote/src
-    
