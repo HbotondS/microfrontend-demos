@@ -21,3 +21,4 @@ jobs:
           MERGE_LABELS: "automerge,!work in progress"
           MERGE_REMOVE_LABELS: "automerge"
           MERGE_METHOD: "merge"
+          MERGE_DELETE_BRANCH: "true"
