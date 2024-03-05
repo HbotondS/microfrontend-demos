@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  svelte-remote:
+  svelte-remote-softarc:
     name: Lint Svelte remote app - softarc plugin
     runs-on: ubuntu-latest
 
@@ -23,10 +23,10 @@ jobs:
         run: npm install
 
       - name: Linting
-        working-directory: svelte-mf-app/remote
+        working-directory: svelte-mf-app/softarc-plugin/remote
         run: eslint src
 
-  svelte-host:
+  svelte-host-softarc:
     name: Lint Svelte host app - softarc plugin
     runs-on: ubuntu-latest
 
@@ -43,7 +43,47 @@ jobs:
         run: npm install
 
       - name: Linting
-        working-directory: svelte-mf-app/host
+        working-directory: svelte-mf-app/softarc-plugin/host
+        run: eslint src
+
+  svelte-remote-originjs:
+    name: Lint Svelte remote app - originjs plugin
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: svelte-mf-app/originjs-plugin/remote
+        run: npm install
+
+      - name: Linting
+        working-directory: svelte-mf-app/originjs-plugin/remote
+        run: eslint src
+
+  svelte-host-originjs:
+    name: Lint Svelte host app - originjs plugin
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: svelte-mf-app/originjs-plugin/host
+        run: npm install
+
+      - name: Linting
+        working-directory: svelte-mf-app/originjs-plugin/host
         run: eslint src
 
   react-remote:
