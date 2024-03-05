@@ -7,7 +7,7 @@ on:
 
 jobs:
   svelte-remote:
-    name: Lint Svelte remote app
+    name: Lint Svelte remote app - softarc plugin
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
       - run: npm install eslint --global
       - name: Install dependencies
-        working-directory: svelte-mf-app/remote
+        working-directory: svelte-mf-app/softarc-plugin/remote
         run: npm install
 
       - name: Linting
@@ -27,7 +27,7 @@ jobs:
         run: eslint src
 
   svelte-host:
-    name: Lint Svelte host app
+    name: Lint Svelte host app - softarc plugin
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +39,7 @@ jobs:
           node-version: '20'
       - run: npm install eslint --global
       - name: Install dependencies
-        working-directory: svelte-mf-app/host
+        working-directory: svelte-mf-app/softarc-plugin/host
         run: npm install
 
       - name: Linting
