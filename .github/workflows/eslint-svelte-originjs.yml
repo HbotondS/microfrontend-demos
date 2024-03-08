@@ -1,12 +1,11 @@
 name: Linting Svelte MF with OriginJS plugin 
 
 on:
-  push:
-    paths:
-      - 'svelte-mf-app/originjs-plugin/**'
   pull_request:
     branches:
       - main
+    paths:
+      - 'svelte-mf-app/originjs-plugin/**'
 
 jobs:
   svelte-remote-originjs:
