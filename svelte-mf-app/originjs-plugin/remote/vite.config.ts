@@ -15,4 +15,7 @@ export default defineConfig({
       shared: ['svelte', 'tailwindcss']
     })
   ],
+  build: {
+    cssCodeSplit: false, // used to include tailwindcss in the remoteEntry.js
+  }
 })

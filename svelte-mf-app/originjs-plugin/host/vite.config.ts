@@ -12,8 +12,9 @@ export default defineConfig({
     federation({
       name: 'host',
       remotes: {
-        'remote': 'remote@http://localhost:4173/assets/remoteEntry.js',
-      }
+        'remote': 'http://localhost:4173/assets/remoteEntry.js',
+      },
+      shared: ['svelte']
     }),
   ],
 })
