@@ -1,0 +1,52 @@
+name: Linting Svelte MF with OriginJS plugin 
+
+on:
+  push:
+    paths:
+      - 'svelte-mf-app/originjs-plugin/**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  svelte-remote-originjs:
+    name: Lint remote app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: svelte-mf-app/originjs-plugin/remote
+        run: npm install
+
+      - name: Linting
+        working-directory: svelte-mf-app/originjs-plugin/remote
+        run: eslint src
+
+  svelte-host-originjs:
+    name: Lint host app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: svelte-mf-app/originjs-plugin/host
+        run: npm install
+
+      - name: Linting
+        working-directory: svelte-mf-app/originjs-plugin/host
+        run: eslint src
+
+  

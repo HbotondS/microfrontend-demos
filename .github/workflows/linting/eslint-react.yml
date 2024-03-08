@@ -1,0 +1,50 @@
+name: Linting React MF
+
+on:
+  push:
+    paths:
+      - 'react-mf-app/**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  react-remote:
+    name: Lint remote app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: react-mf-app/remote
+        run: npm install
+
+      - name: Linting
+        working-directory: react-mf-app/remote
+        run: eslint src
+
+  react-host:
+    name: Lint host app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: react-mf-app/host
+        run: npm install
+
+      - name: Linting
+        working-directory: react-mf-app/host
+        run: eslint src
