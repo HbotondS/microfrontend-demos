@@ -11,7 +11,12 @@ export default defineConfig({
       filename: 'remoteEntry.js',
       exposes: {
         './Counter': './src/components/Counter.vue',
-      }
+      },
+      shared: ['vue', 'tailwindcss']
     })
   ],
+  build: {
+    cssCodeSplit: false,
+    target: ["chrome89", "edge89", "firefox89", "safari15"]
+  }
 })
