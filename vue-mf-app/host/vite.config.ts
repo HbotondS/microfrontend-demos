@@ -11,6 +11,11 @@ export default defineConfig({
       remotes: {
         'remote': 'http://localhost:4173/assets/remoteEntry.js',
       },
+      shared: ['vue']
     })
   ],
+  build: {
+    cssCodeSplit: false,
+    target: ["chrome89", "edge89", "firefox89", "safari15"]
+  }
 })
