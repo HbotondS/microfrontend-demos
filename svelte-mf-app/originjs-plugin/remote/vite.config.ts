@@ -12,7 +12,7 @@ export default defineConfig({
       exposes: {
         './Counter': './src/lib/Counter.svelte',
       },
-      shared: ['svelte', 'tailwindcss']
+      shared: ['svelte']
     })
   ],
   build: {

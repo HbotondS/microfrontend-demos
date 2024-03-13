@@ -12,7 +12,7 @@ export default defineConfig({
       exposes: {
         './Counter': './src/components/Counter.vue',
       },
-      shared: ['vue', 'tailwindcss']
+      shared: ['vue']
     })
   ],
   build: {
