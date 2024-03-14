@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'react-mf-app/**'
+      - 'react-mf-app/simple-webpack/**'
 
 jobs:
   react-remote:
@@ -21,11 +21,11 @@ jobs:
           node-version: '20'
       - run: npm install eslint --global
       - name: Install dependencies
-        working-directory: react-mf-app/remote
+        working-directory: react-mf-app/simple-webpack/remote
         run: npm install
 
       - name: Linting
-        working-directory: react-mf-app/remote
+        working-directory: react-mf-app/simple-webpack/remote
         run: eslint src
 
   react-host:
@@ -41,9 +41,9 @@ jobs:
           node-version: '20'
       - run: npm install eslint --global
       - name: Install dependencies
-        working-directory: react-mf-app/host
+        working-directory: react-mf-app/simple-webpack/host
         run: npm install
 
       - name: Linting
-        working-directory: react-mf-app/host
+        working-directory: react-mf-app/simple-webpack/host
         run: eslint src
