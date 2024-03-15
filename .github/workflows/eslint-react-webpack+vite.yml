@@ -1,0 +1,49 @@
+name: Linting React MF: webpack + vite
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'react-mf-app/webpack+vite/**'
+
+jobs:
+  react-remote:
+    name: Lint webpack remote app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: react-mf-app/webpack+vite/remote
+        run: npm install
+
+      - name: Linting
+        working-directory: react-mf-app/webpack+vite/remote
+        run: eslint src
+
+  react-host:
+    name: Lint host app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: react-mf-app/webpack+vite/host
+        run: npm install
+
+      - name: Linting
+        working-directory: react-mf-app/webpack+vite/host
+        run: eslint src
