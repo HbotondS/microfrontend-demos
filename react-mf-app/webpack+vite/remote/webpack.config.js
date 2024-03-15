@@ -1,13 +1,18 @@
 const { ModuleFederationPlugin } = require('webpack').container;
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
+const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: 'http://localhost:3000/',
+    publicPath: 'https://fantastic-space-pancake-7rw7qg4g7rvhwqr-3000.app.github.dev/',
   },
 
   devServer: {
     port: 3000
+  },
+
+  resolve: {
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
 
   module: {
@@ -41,11 +46,14 @@ module.exports = {
         "./Counter": "./src/Counter.tsx"
       },
       shared: {
+        ...deps,
         react: {
-          singleton: true
+          singleton: true,
+          requiredVersion: deps.react
         },
         "react-dom": {
-          singleton: true
+          singleton: true,
+          requiredVersion: deps["react-dom"]
         },
       }
     }),
