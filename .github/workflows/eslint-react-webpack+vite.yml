@@ -1,4 +1,4 @@
-name: Linting React MF: webpack + vite
+name: Linting React MF - webpack + vite
 
 on:
   pull_request:
