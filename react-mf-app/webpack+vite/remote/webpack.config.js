@@ -3,12 +3,21 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const deps = require("./package.json").dependencies;
 module.exports = {
+  experiments: {
+    outputModule: true,
+  },
   output: {
-    publicPath: 'https://fantastic-space-pancake-7rw7qg4g7rvhwqr-3000.app.github.dev/',
+    publicPath: '//localhost:3000/',
+    module: true
   },
 
   devServer: {
-    port: 3000
+    port: 3000,
+    headers: {
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
   },
 
   resolve: {
