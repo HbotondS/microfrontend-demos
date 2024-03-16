@@ -3,10 +3,6 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
-  output: {
-    publicPath: "https://{{ name }}-8080.app.github.dev/",
-  },
-
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
@@ -44,7 +40,7 @@ module.exports = (_, argv) => ({
       name: "host",
       filename: "remoteEntry.js",
       remotes: {
-        remote: "remote@https://{{ name }}-3000.app.github.dev/remoteEntry.js"
+        remote: "remote@http://localhost:3000/remoteEntry.js"
       },
       exposes: {},
       shared: {

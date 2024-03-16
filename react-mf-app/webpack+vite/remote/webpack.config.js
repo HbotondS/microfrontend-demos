@@ -1,19 +1,27 @@
+const { ModuleFederationPlugin } = require('webpack').container;
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 const deps = require("./package.json").dependencies;
-module.exports = (_, argv) => ({
+module.exports = {
+  experiments: {
+    outputModule: true,
+  },
   output: {
-    publicPath: "https://vigilant-funicular-w9xv6wjw5qxhv4v-8080.app.github.dev/",
+    publicPath: '//localhost:3000/',
+    module: true
+  },
+
+  devServer: {
+    port: 3000,
+    headers: {
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
   },
 
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
-  },
-
-  devServer: {
-    port: 8080,
-    historyApiFallback: true,
   },
 
   module: {
@@ -41,26 +49,25 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "host",
+      name: "remote",
       filename: "remoteEntry.js",
-      remotes: {
-        remote: "remote@https://vigilant-funicular-w9xv6wjw5qxhv4v-3000.app.github.dev/remoteEntry.js"
+      exposes: {
+        "./Counter": "./src/Counter.tsx"
       },
-      exposes: {},
       shared: {
         ...deps,
         react: {
           singleton: true,
-          requiredVersion: deps.react,
+          requiredVersion: deps.react
         },
         "react-dom": {
           singleton: true,
-          requiredVersion: deps["react-dom"],
+          requiredVersion: deps["react-dom"]
         },
-      },
+      }
     }),
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
-    }),
-  ],
-});
+      template: "./src/index.html"
+    })
+  ]
+};
