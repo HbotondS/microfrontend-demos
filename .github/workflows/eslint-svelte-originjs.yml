@@ -26,7 +26,7 @@ jobs:
 
       - name: Linting
         working-directory: svelte-mf-app/originjs-plugin/remote
-        run: npm run lint
+        run: eslint src
 
   svelte-host-originjs:
     name: Lint host app
@@ -46,6 +46,6 @@ jobs:
 
       - name: Linting
         working-directory: svelte-mf-app/originjs-plugin/host
-        run: npm run lint
+        run: eslint src
 
   
