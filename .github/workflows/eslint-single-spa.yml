@@ -1,0 +1,49 @@
+name: Linting Single SPA MF
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'single-spa/**'
+
+jobs:
+  react-remote:
+    name: Lint remote app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: single-spa/mfa1
+        run: npm install
+
+      - name: Linting
+        working-directory: single-spa/mfa1
+        run: eslint src
+
+  react-host:
+    name: Lint host app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install eslint --global
+      - name: Install dependencies
+        working-directory: single-spa/root-config
+        run: npm install
+
+      - name: Linting
+        working-directory: single-spa/root-config
+        run: eslint src
