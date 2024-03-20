@@ -26,7 +26,7 @@ jobs:
 
       - name: Linting
         working-directory: single-spa/mfa1
-        run: eslint src
+        run: npm run lint
 
   react-host:
     name: Lint host app
@@ -46,4 +46,4 @@ jobs:
 
       - name: Linting
         working-directory: single-spa/root-config
-        run: eslint src
+        run: npm run lint
