@@ -1,3 +1,9 @@
+import { Counter } from "./components/Counter";
+
 export default function Root(props) {
-  return <section>{props.name} is mounted!</section>;
+  return (
+    <div className="mt-10 text-3xl mx-auto max-w-6xl">
+      <Counter />
+    </div>
+  )
 }
