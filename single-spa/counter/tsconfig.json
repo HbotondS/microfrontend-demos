@@ -4,7 +4,7 @@
     "jsx": "react-jsx",
     "declarationDir": "dist"
   },
-  "files": ["src/sing-spa-test-mfa1.tsx"],
+  "files": ["src/sing-spa-test-counter.tsx"],
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test*"]
 }
