@@ -21,11 +21,11 @@ jobs:
           node-version: '20'
       - run: npm install eslint --global
       - name: Install dependencies
-        working-directory: single-spa/mfa1
+        working-directory: single-spa/counter
         run: npm install
 
       - name: Linting
-        working-directory: single-spa/mfa1
+        working-directory: single-spa/counter
         run: npm run lint
 
   react-host:
