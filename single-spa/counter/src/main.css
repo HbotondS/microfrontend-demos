@@ -1,0 +1,5 @@
+.counter {
+  border: dotted .2rem red;
+  width: fit-content;
+  padding: .5rem;
+}

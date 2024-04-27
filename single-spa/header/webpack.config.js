@@ -4,19 +4,12 @@ const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     orgName: "sing-spa-test",
-    projectName: "mfa1",
+    projectName: "header",
     webpackConfigEnv,
     argv,
   });
 
   return merge(defaultConfig, {
-    module: {
-      rules: [
-        {
-          test: /\.(css|s[ac]ss)$/i,
-          use: ["style-loader", "css-loader", "postcss-loader"],
-        }
-      ]
-    },
+    // modify the webpack config however you'd like to by adding to this object
   });
 };
