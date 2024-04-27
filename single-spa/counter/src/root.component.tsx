@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { increase } from "@sing-spa-test/store-events";
+import './main.css';
 
 export default function Root() {
   const [count, setCount] = useState(0);
@@ -10,9 +11,9 @@ export default function Root() {
   }
 
   return (
-    <>
+    <div className="counter">
       <div>count = {count}</div>
       <button onClick={ updateCounter }>Add one</button>
-    </>
+    </div>
   );
 }
