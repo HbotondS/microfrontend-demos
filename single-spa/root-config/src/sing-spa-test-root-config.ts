@@ -15,6 +15,13 @@ registerApplication({
   activeWhen: ["/"],
 });
 
+registerApplication({
+  name: "angular-test",
+  app: () =>
+    System.import<LifeCycles>("http://localhost:4200/main.js"),
+  activeWhen: ["/"],
+});
+
 start({
   urlRerouteOnly: true,
 });
